@@ -35,7 +35,7 @@ class DetectionNode(TensorflowNode):
         self.min_score_thresh_p = self.declare_parameter('min_score_thresh', 0.5)
         # Default disabled, use values smaller than 1 to enable
         self.ioa_thresh_p = self.declare_parameter('ioa_thresh', 1.0)
-        self.input_topic_p = self.declare_parameter('input_topic', 'image')
+        self.input_topic_p = self.declare_parameter('input_topic', '/camera/color/image_raw')
 
         # Prepare the Tensorflow network
         self.startup(tf_model)

@@ -14,7 +14,8 @@
 # ==============================================================================
 
 import numpy as np
-
+import rclpy
+from rclpy.qos import QoSProfile
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 from ros2_tf_core import img_conversion as img_utils
@@ -29,6 +30,8 @@ class DetectionNode(TensorflowNode):
 
     def __init__(self, tf_model, node_name, republish_image=True):
         super().__init__(node_name)
+         #qos_profile = QoSProfile(depth=10, lifespan=Duration(seconds=3), reliability=QoSReliabilityPolicy.RELIABLE)
+        qos_profile = QoSProfile(depth=10, reliability=QoSReliabilityPolicy.BEST_EFFORT)
 
         self.republish_image = republish_image
         # ROS parameters

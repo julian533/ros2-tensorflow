@@ -13,9 +13,9 @@ spec:
         app: ros2-tensorflow
     spec:
       containers:
-      - image: naju1012/tenserflow_docker:latest
+      - image: naju1012/tensorflow-ros2:latest 
         command: ["/bin/bash", "-c"]
-        args: ["cd tf_ws; colcon build;source install/local_setup.sh;source /root/tf_ws/install/local_setup.sh;source /opt/ros/eloquent/setup.sh;ros2 run tf_detection_py server"]
+        args: ["cd tf_ws;ls;source /opt/ros/eloquent/setup.sh;colcon build;source install/local_setup.sh;ros2 run tf_classification_py server"]
         securityContext:
           privileged: true
         imagePullPolicy: IfNotPresent
@@ -23,7 +23,6 @@ spec:
       imagePullSecrets:
       - name: docker-registry
       nodeSelector:
-        location: lab2
+        location: cloud1
       restartPolicy: Always
       hostNetwork: true
-      dnsPolicy: ClusterFirstWithHostNet
